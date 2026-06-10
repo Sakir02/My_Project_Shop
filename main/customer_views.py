@@ -9,7 +9,7 @@ from .models import User,Product, Customer, Cart, Order, OrderItem, Payment ,Con
 # ==========================================
 # Home & Info Pages
 # ==========================================
-def home(request):
+def index(request):
     products = Product.objects.all().order_by("-id")[:6]
     most_selling_product = (
         Product.objects.annotate(sold_quantity=Sum("orderitem__quantity"))

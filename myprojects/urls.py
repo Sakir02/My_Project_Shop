@@ -24,7 +24,7 @@ from main.admin_views import (
 from main.customer_views import (
     about,
     contact,
-    home,
+    index,
     login,
     logout,
     product,
@@ -42,7 +42,7 @@ from main.customer_views import (
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', home, name="home"),
+    path('', index, name="index"),
     path('product/', product, name="product"),
     path('about/', about, name="about"),
     path('contact/', contact, name="contact"),
