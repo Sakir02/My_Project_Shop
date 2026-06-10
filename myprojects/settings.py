@@ -16,9 +16,9 @@ from pathlib import Path
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 # Use environment variable on Vercel, fallback for local
-SECRET_KEY = os.environ.get('SECRET_KEY', 'django-insecure-local-dev-key-only')
+SECRET_KEY = "django-insecure-local-dev-key-only"
 
-DEBUG = os.environ.get('DEBUG', 'False') == 'True'
+DEBUG = 'True'
 
 ALLOWED_HOSTS = ['*']
 
