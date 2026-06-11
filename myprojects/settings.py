@@ -11,16 +11,14 @@ https://docs.djangoproject.com/en/6.0/ref/settings/
 """
 
 import os
-from pathlib import Path
 import dj_database_url
+from pathlib import Path
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 # Use environment variable on Vercel, fallback for local
-SECRET_KEY = "django-insecure-local-dev-key-only"
-
-DEBUG = False
-
+SECRET_KEY = os.environ.get("SECRET_KEY", "django-insecure-local-dev-key-only")
+DEBUG = os.environ.get("DEBUG", "False") == "True"
 ALLOWED_HOSTS = ['*']
 
 INSTALLED_APPS = [
@@ -65,10 +63,10 @@ WSGI_APPLICATION = 'myprojects.wsgi.application'
 
 DATABASES = {
     "default": dj_database_url.config(
-        default=f"sqlite:///{BASE_DIR/'db.sqlite3'}"
+        default=os.environ.get("DATABASE_URL"),
+        conn_max_age=600
     )
 }
-
 AUTH_PASSWORD_VALIDATORS = [
     {'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator'},
     {'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator'},
